@@ -1,0 +1,123 @@
+:<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Busca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"><script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+        <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+            <h1 class="jumbotron-heading">Exemplo API</h1>
+            <p class="lead text-muted">API de busca por CEP - Endereço</p>
+                <div class="row">
+                        <div class="col-md-4  mx-auto">
+                            <form id="cep_form">
+                            <div class="input-group">
+                                
+                                <input placeholder="Digite o CEP ou Endereço" id="logradouro" name="logradouro" class="form-control py-2 border-left-0 border" type="search">
+                                <span class="input-group-append">
+                                <input type="submit" value="buscar" class="btn btn-primary border-left-0 border">
+                                    
+                                </span>
+                            
+                            </div>
+                            </form>
+                        </div>
+                </div>
+            </p>
+            </div>
+        </section>
+    
+        <div class="album py-5 bg-light">
+            <div class="container">
+    
+            <div class="row">
+         
+                <table id="result" class="table table-striped">
+                <thead>
+                    <tr class="bg-primary text-white">
+                        <td>#</td>
+                        <td>Logradouro</td>
+                        <td>Bairro</td>
+                        <td>Localidade</td>
+                        <td>CEP</td>
+                    </tr>
+                </thead>
+                <tbody> 
+                </tbody>
+                </table>    
+
+            </div>
+            </div>
+        </div>
+    
+        </main>
+    
+        <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+            <a href="#">Topo</a>
+            </p>
+            <p>Demonstração API</p>
+            <p>Ver no <a href="#">Github</a> <a href="#"></a>.</p>
+        </div>
+        </footer>
+
+<script>
+$(document).ready(function(){
+
+    $("#cep_form").submit(function(e){
+        e.preventDefault();
+        var tbody = $('#result tbody');
+      
+        tbody.empty();
+        
+        
+        $.ajax({
+            method: "GET",
+            url: "../buscaCepEndereco",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: {
+                logradouro: $("#logradouro").val()
+            },
+            beforeSend: function() {
+                tbody.html('<tr><td colspan="5"><center>Carregando...</center></td></tr>');    
+            },
+            success: function(data) {
+                tbody.empty();
+                var row, dados, numCols = 4, tCell;
+                if ("Message" in data) {
+                    tbody.html('<tr><td colspan="5">'+ data.Message +'</td></tr>');    
+                } else {
+                    for(var i = 0; i < data.length; i++) {
+                        row = "<tr><td>" +  (i+1) + "</td>"+
+                        "<td>" +  data[i].logradouro + "</td>" +
+                        "<td>" +  data[i].bairro + "</td>" +
+                        "<td>" +  data[i].cidade + "/" + data[i].uf +"</td>" +
+                        "<td>" +  data[i].cep + "</td></tr>";
+                        tbody.append(row);     
+                    }
+                }         
+                
+            },
+            error: function(data) {
+
+            }
+
+        });
+
+    });
+
+});
+
+</script>        
+</body>
+</html>
