@@ -82,12 +82,10 @@ $(document).ready(function(){
         
         $.ajax({
             method: "GET",
-            url: "../buscaCepEndereco",
+            url: "../buscaCepEndereco/" + $("#logradouro").val(),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            data: {
-                logradouro: $("#logradouro").val()
-            },
+            
             beforeSend: function() {
                 tbody.html('<tr><td colspan="5"><center>Carregando...</center></td></tr>');    
             },
