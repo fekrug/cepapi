@@ -1,4 +1,4 @@
-#API para busca de CEP e Endereço
+**API PARA BUSCA DE CEP E ENDEREÇOS**
 
 **Api para consulta de CEPs e Endereços**
 
@@ -7,14 +7,16 @@
 
 
 
-###Exemplo URL da API de consulta por CEP.
+**Exemplo URL da API de consulta por CEP.**
+
 Exemplo URL de busca por CEP.
 
 `Exemplo: http://localhost/apicep/buscaCepEndereco/89201-000`
 
 `Exemplo: http://localhost/apicep/buscaCepEndereco/89201000`
 
-####Retorno:
+**Retorno:**
+
 ```json
 {
     "cep": "89201-000",
@@ -25,13 +27,15 @@ Exemplo URL de busca por CEP.
 }
 ```
 
-###Exemplo URL da API de consulta por Rua.
+**xemplo URL da API de consulta por Rua.**
+
 Exemplo URL de busca por rua.
 
 `Exemplo: http://localhost/apicep/buscaCepEndereco/Pfuetzenreuter`
 
 
-####Retorno:
+**Retorno:**
+
 ```json
   {
 "cep": "89219-200",
@@ -51,11 +55,7 @@ Exemplo URL de busca por rua.
 
 
 
-[========]
-
-
-
-#### **Informações Adicionais:**
+**Informações Adicionais:**
 
 |  Arquivo | Local  |
 | ------------ | ------------ |
