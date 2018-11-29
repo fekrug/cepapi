@@ -14,7 +14,7 @@ Exemplo URL de busca por CEP.
 
 `Exemplo: http://localhost/apicep/buscaCepEndereco/89201000`
 
-**Retorno:**
+**Retorno (JSON):**
 
 ```json
 {
@@ -26,14 +26,14 @@ Exemplo URL de busca por CEP.
 }
 ```
 
-**xemplo URL da API de consulta por Rua.**
+**Exemplo URL da API de consulta por Rua.**
 
 Exemplo URL de busca por rua.
 
 `Exemplo: http://localhost/apicep/buscaCepEndereco/Pfuetzenreuter`
 
 
-**Retorno:**
+**Retorno (JSON):**
 
 ```json
   {
