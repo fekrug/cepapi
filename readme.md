@@ -1,6 +1,5 @@
 **API PARA BUSCA DE CEP E ENDEREÇOS**
 
-**Api para consulta de CEPs e Endereços**
 
 
 
